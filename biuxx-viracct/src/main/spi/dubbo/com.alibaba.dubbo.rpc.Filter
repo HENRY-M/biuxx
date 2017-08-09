@@ -1,2 +1,2 @@
-logProviderUtilFilter=com.biuxx.util.log.DubboProviderUtilFilter
-logConsumerUtilFilter=com.biuxx.util.log.DubboConsumerUtilFilter
+logProviderUtilFilter=com.biuxx.utils.log.DubboProviderUtilFilter
+logConsumerUtilFilter=com.biuxx.utils.log.DubboConsumerUtilFilter

@@ -12,9 +12,16 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<biuxx.utils.version>0.0.1-SNAPSHOT</biuxx.utils.version>
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>com.biuxx</groupId>
+			<artifactId>biuxx-utils</artifactId>
+			<version>${biuxx.utils.version}</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
