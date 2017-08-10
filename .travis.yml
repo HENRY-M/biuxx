@@ -1,0 +1,6 @@
+language: java
+
+jdk:
+  - oraclejdk8
+  
+install: cd biuxx-utils && mvn package -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
