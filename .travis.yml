@@ -3,17 +3,17 @@ language: java
 jdk:
   - oraclejdk8
   
-before_install:
+middware:
   - echo "Before install"
-  - echo "Do something before build"
   
-install:
-  - echo "install step"
-
-script: 
+tools:
   - cd biuxx-utils && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
+
+interfaces: 
   - cd biuxx-viracct-service && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
+  
+apps:
   - cd biuxx-viracct && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
   
 after_success:
-  - echo "Build done!"
+  - echo "Biu++ Build done!"
