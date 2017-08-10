@@ -3,4 +3,6 @@ language: java
 jdk:
   - oraclejdk8
   
-install: cd biuxx-utils && mvn package -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
+script: cd biuxx-utils && mvn clean package
+  
+install: cd biuxx-utils && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
