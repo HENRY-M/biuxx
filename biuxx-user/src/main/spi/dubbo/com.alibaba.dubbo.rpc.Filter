@@ -1,0 +1,2 @@
+dubboProviderLogFilter=com.biuxx.utils.log.DubboProviderLogFilter
+dubboConsumerLogFilter=com.biuxx.utils.log.DubboConsumerLogFilter
