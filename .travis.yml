@@ -12,9 +12,11 @@ install:
 before_script: 
   - cd biuxx-utils && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
   - cd biuxx-viracct-api && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
+  - cd biuxx-tranx-api && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
   
 script:
   - cd biuxx-viracct && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
+  - cd biuxx-tranx && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
   
 after_success:
   - echo "Biu++ Build done!"
