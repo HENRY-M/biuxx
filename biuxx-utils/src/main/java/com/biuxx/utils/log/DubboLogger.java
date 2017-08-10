@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.slf4j.MDC;
 
-public class LogUtil {
+public class DubboLogger {
 	
 	public static final String PRODUCT_NAME = "product_id";
 	
