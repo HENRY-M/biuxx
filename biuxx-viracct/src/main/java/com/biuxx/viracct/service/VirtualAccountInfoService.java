@@ -1,4 +1,4 @@
-package com.biuxx.viracct.remote;
+package com.biuxx.viracct.service;
 
 public interface VirtualAccountInfoService {
 

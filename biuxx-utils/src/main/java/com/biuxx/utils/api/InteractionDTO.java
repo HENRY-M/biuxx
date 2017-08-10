@@ -1,4 +1,4 @@
-package com.biuxx.utils.remote;
+package com.biuxx.utils.api;
 
 import java.io.Serializable;
 
