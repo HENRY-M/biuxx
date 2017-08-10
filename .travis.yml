@@ -8,9 +8,6 @@ before_install:
   
 install:
   - echo "Install"
-  
-after_install:
-  - echo "After install"
 
 before_script: 
   - cd biuxx-utils && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
