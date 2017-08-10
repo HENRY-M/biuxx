@@ -10,6 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.biuxx.utils.log.DubboLogger;
+
 import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.classic.joran.JoranConfigurator;
 import ch.qos.logback.core.joran.spi.JoranException;
@@ -28,8 +30,7 @@ public class Startup {
 	    
 	    String resPath = getResoucesPath(Startup.class);
 	    
-	    //初始化LOG配置，注册MDC
-//        LogUtil.registerLocationInfo("PP", "CR", "01");
+        DubboLogger.registerLocationInfo("BIUXX", "VIRACCT", nodeName);
 	    
 	    String logBackPathName = resPath + "logback.xml";
         LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
@@ -50,7 +51,7 @@ public class Startup {
 
 		applicationContext.start();
 
-		System.out.println("启动完成！！！");
+		logger.info("Start server succeed!");
 		
 		while (true) {
 			try {

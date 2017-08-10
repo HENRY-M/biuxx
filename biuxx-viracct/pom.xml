@@ -12,7 +12,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<biuxx.viracct.service.version>0.0.1-SNAPSHOT</biuxx.viracct.service.version>
+		<biuxx.viracct.api.version>0.0.1-SNAPSHOT</biuxx.viracct.api.version>
 		<spring.version>4.2.1.RELEASE</spring.version>
 		<spring.remote.version>2.0.8</spring.remote.version>
 		<dubbo.version>2.5.3</dubbo.version>
@@ -32,8 +32,8 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.biuxx</groupId>
-			<artifactId>biuxx-viracct-service</artifactId>
-			<version>${biuxx.viracct.service.version}</version>
+			<artifactId>biuxx-viracct-api</artifactId>
+			<version>${biuxx.viracct.api.version}</version>
 		</dependency>
 
 		<dependency>
