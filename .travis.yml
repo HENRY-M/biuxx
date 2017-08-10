@@ -3,6 +3,17 @@ language: java
 jdk:
   - oraclejdk8
   
-script: cd biuxx-utils && mvn clean package
+before_install:
+  - echo "Before install"
+  - echo "Do something before build"
   
-install: cd biuxx-utils && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
+install:
+  - echo "install step"
+
+script: 
+  - cd biuxx-utils && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
+  - cd biuxx-viracct-service && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
+  - cd biuxx-viracct && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
+  
+after_success:
+  - echo "Build done!"
