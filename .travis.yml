@@ -3,16 +3,20 @@ language: java
 jdk:
   - oraclejdk8
   
-middware:
+before_install:
   - echo "Before install"
   
-tools:
-  - cd biuxx-utils && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
+install:
+  - echo "Install"
+  
+after_install:
+  - echo "After install"
 
-interfaces: 
+before_script: 
+  - cd biuxx-utils && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
   - cd biuxx-viracct-service && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
   
-apps:
+script:
   - cd biuxx-viracct && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
   
 after_success:
