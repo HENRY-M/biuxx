@@ -14,8 +14,8 @@
 	<dubbo:protocol name="${dubbo.protocol.name}" port="${dubbo.protocol.port}" />
 
 	<dubbo:consumer check="${dubbo.consumer.check}" retries="${dubbo.consumer.retries}"
-		timeout="${dubbo.consumer.timeout}" filter="logConsumerUtilFilter" />
+		timeout="${dubbo.consumer.timeout}" filter="dubboConsumerLogFilter" />
 
-	<dubbo:provider filter="logProviderUtilFilter" />
+	<dubbo:provider filter="dubboProviderLogFilter" />
 	
 </beans>
