@@ -11,7 +11,7 @@ install:
 
 before_script: 
   - cd biuxx-utils && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
-  - cd biuxx-viracct-service && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
+  - cd biuxx-viracct-api && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
   
 script:
   - cd biuxx-viracct && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
