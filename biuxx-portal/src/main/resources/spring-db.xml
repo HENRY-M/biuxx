@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/tx     
+		http://www.springframework.org/schema/tx/spring-tx-4.0.xsd"
+        >
+
+
+    <bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="url" value="${db.url}"/>
+        <property name="username" value="${db.username}"/>
+        <property name="password" value="${db.password}"/>
+
+        <property name="initialSize" value="${db.initial_size}"/>
+        <property name="maxActive" value="${db.max_active}"/>
+        <property name="minIdle" value="${db.min_idle}"/>
+        <property name="maxWait" value="${db.max_wait}"/>
+
+        <property name="validationQuery" value="SELECT 1"/>
+        <property name="testOnBorrow" value="false"/>
+        <property name="testOnReturn" value="false"/>
+        <property name="testWhileIdle" value="true"/>
+
+        <property name="timeBetweenEvictionRunsMillis" value="${db.time_between_eviction_runs_millis}"/>
+        <property name="minEvictableIdleTimeMillis" value="${db.min_evictable_idle_timemillis}"/>
+
+        <property name="removeAbandoned" value="${db.remove_abandoned}"/>
+        <property name="removeAbandonedTimeout" value="${db.remove_abandoned_timeout}"/>
+        <property name="logAbandoned" value="${db.log_abandoned}"/>
+
+        <property name="filters" value="mergeStat"/>
+    </bean>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation">
+            <value>classpath:mappers/config.xml</value>
+        </property>
+        <property name="mapperLocations">
+            <value>classpath:mappers/*Mapper.xml</value>
+        </property>
+    </bean>
+    
+    <bean name="mapperscan" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.biuxx"/>
+        <property name="annotationClass" value="org.springframework.stereotype.Repository"/>
+    </bean>
+    <tx:annotation-driven transaction-manager="databaseTransactionManager" proxy-target-class="true"/>
+    <bean id="databaseTransactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+</beans>

@@ -18,6 +18,11 @@ before_script:
   - cd biuxx-user-api && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
   - cd biuxx-clearing-api && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
   - cd biuxx-settlement-api && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
+  - cd biuxx-gateway-api && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
+  - cd biuxx-findock-api && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
+  - cd biuxx-console-api && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
+  - cd biuxx-portal-api && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
+  - cd biuxx-riskcontrol-api && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
   
 script:
   - cd biuxx-viracct && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
@@ -27,6 +32,11 @@ script:
   - cd biuxx-user && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
   - cd biuxx-clearing && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
   - cd biuxx-settlement && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
+  - cd biuxx-gateway && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
+  - cd biuxx-findock && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
+  - cd biuxx-console && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
+  - cd biuxx-portal && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
+  - cd biuxx-riskcontrol && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
   
 after_success:
   - echo "Biu++ Build done!"
