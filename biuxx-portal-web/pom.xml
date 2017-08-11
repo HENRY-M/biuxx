@@ -3,23 +3,20 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.biuxx</groupId>
-	<artifactId>biuxx-viracct</artifactId>
+	<artifactId>biuxx-portal-web</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
-	<name>biuxx-viracct</name>
+	<name>biuxx-portal-web</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<biuxx.viracct.api.version>0.0.1-SNAPSHOT</biuxx.viracct.api.version>
+		<biuxx.portal.api.version>0.0.1-SNAPSHOT</biuxx.portal.api.version>
+		<servlet-api.version>3.1.0</servlet-api.version>
 		<spring.version>4.2.1.RELEASE</spring.version>
 		<spring.remote.version>2.0.8</spring.remote.version>
 		<dubbo.version>2.5.3</dubbo.version>
-		<mybatis.version>3.2.7</mybatis.version>
-		<mybatis.spring.version>1.2.2</mybatis.spring.version>
-		<mysql.connector.version>5.1.39</mysql.connector.version>
-		<druid.version>1.0.7</druid.version>
 		<commons.lang3.version>3.1</commons.lang3.version>
 		<commons.logging.version>1.1.1</commons.logging.version>
 		<aspectj.version>1.8.8</aspectj.version>
@@ -32,13 +29,32 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.biuxx</groupId>
-			<artifactId>biuxx-viracct-api</artifactId>
-			<version>${biuxx.viracct.api.version}</version>
+			<artifactId>biuxx-portal-api</artifactId>
+			<version>${biuxx.portal.api.version}</version>
 		</dependency>
 
 		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${servlet-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
 
@@ -107,32 +123,6 @@
 					<artifactId>spring</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>
-
-		<!-- MyBatis -->
-		<dependency>
-			<groupId>org.mybatis</groupId>
-			<artifactId>mybatis</artifactId>
-			<version>${mybatis.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.mybatis</groupId>
-			<artifactId>mybatis-spring</artifactId>
-			<version>${mybatis.spring.version}</version>
-		</dependency>
-
-		<!-- ALIBABA DRUID -->
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>druid</artifactId>
-			<version>${druid.version}</version>
-		</dependency>
-		
-		<!-- MYSQL CONNECTOR -->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>${mysql.connector.version}</version>
 		</dependency>
 
 		<!-- ASPECTJ -->
@@ -206,18 +196,7 @@
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
-				<targetPath>${project.build.directory}/resources</targetPath>
 				<filtering>true</filtering>
-			</resource>
-			<resource>
-				<directory>src/main/scripts</directory>
-				<targetPath>${project.build.directory}/bin</targetPath>
-				<filtering>true</filtering>
-			</resource>
-			<resource>
-				<directory>src/main/resources/mappers</directory>
-				<targetPath>mappers</targetPath>
-				<filtering>false</filtering>
 			</resource>
 			<resource>
 				<directory>src/main/spi/dubbo</directory>
@@ -253,68 +232,6 @@
 					<target>1.8</target>
 					<encoding>UTF-8</encoding>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.9</version>
-				<configuration>
-					<skipTests>true</skipTests>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<version>2.9</version>
-				<executions>
-					<execution>
-						<id>copy-dependencies</id>
-						<phase>prepare-package</phase>
-						<goals>
-							<goal>copy-dependencies</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<includeTypes>jar</includeTypes>
-					<overWriteSnapshots>true</overWriteSnapshots>
-					<type>jar</type>
-					<outputDirectory>${project.build.directory}/lib</outputDirectory>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>2.6</version>
-				<configuration>
-					<archive>
-						<manifest>
-							<addClasspath>true</addClasspath>
-							<classpathPrefix>lib/</classpathPrefix>
-							<mainClass>com.biuxx.viracct.Startup</mainClass>
-							<useUniqueVersions>false</useUniqueVersions>
-						</manifest>
-					</archive>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.5.5</version>
-				<configuration>
-					<descriptors>
-						<descriptor>assembly.xml</descriptor>
-					</descriptors>
-				</configuration>
-				<executions>
-					<execution>
-						<id>make-assembly</id>
-						<phase>package</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>
