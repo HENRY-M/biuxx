@@ -3,7 +3,7 @@
 	<property name="LOG_HOME" value="${logback.loghome}/${project.artifactId}" />
 	<property name="PROJECT" value="${project.artifactId}" />
 	<property name="PRODUCT" value="BIUXX" />
-	<property name="MODULE" value="PORTAL-WEB" />
+	<property name="MODULE" value="GATEWAY-WEB" />
 	
 	<appender name="FILE"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
