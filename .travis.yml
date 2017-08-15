@@ -37,6 +37,9 @@ script:
   - cd biuxx-console && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
   - cd biuxx-portal && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
   - cd biuxx-riskcontrol && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
+  - cd biuxx-portal-web && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
+  - cd biuxx-console-web && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
+  - cd biuxx-gateway-web && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true && cd ..
   
 after_success:
   - echo "Biu++ Build done!"
