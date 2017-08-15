@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<!-- JOB Worker -->
+	<bean id="biuxxWatchdogJob"
+		class="com.biuxx.schedule.jobs.impl.BiuxxWatchdogJobImpl">
+		</bean>
+
+	<!-- JOB Invoking Method -->
+	<bean id="biuxxWatchdogJobTask"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- JOB Worker -->
+		<property name="targetObject">
+			<ref bean="biuxxWatchdogJob" />
+		</property>
+		<!-- Job Worker Method -->
+		<property name="targetMethod">
+			<value>execute</value>
+		</property>
+		<!--Can Concurrent Run or NOT -->
+		<property name="concurrent">
+			<value>false</value>
+		</property>
+	</bean>
+
+	<!-- JOB Trigger -->
+	<bean id="biuxxWatchdogJobTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="biuxxWatchdogJobTask" />
+		</property>
+		<!-- Tigger Time Expression -->
+		<property name="cronExpression">
+			<value>30 * * * * ?</value>
+		</property>
+	</bean>
+
+</beans>
