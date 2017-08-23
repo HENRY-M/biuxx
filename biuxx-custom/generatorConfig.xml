@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<classPathEntry
+		location="D:\Program Files\Maven\repos\mysql\mysql-connector-java\5.1.39\mysql-connector-java-5.1.39.jar"></classPathEntry>
+
+	<context id="context">
+
+		<property name="mergeable" value="true" />
+
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+		<!-- 
+		<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/> 
+		<plugin type="org.mybatis.generator.plugins.ToStringPlugin" /> 
+		-->
+		<commentGenerator>
+			<property name="suppressAllComments" value="false" />
+			<property name="suppressDate" value="true" />
+		</commentGenerator>
+
+		<jdbcConnection
+			connectionURL="jdbc:mysql://192.168.56.200:3306/biuxx?characterEncoding=UTF-8&amp;useSSL=false"
+			driverClass="com.mysql.jdbc.Driver" 
+			password="b1uxx@BIUXX" 
+			userId="biuxx" />
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="true" />
+		</javaTypeResolver>
+
+		<javaModelGenerator 
+			targetPackage="com.biuxx.custom.dao.po"
+			targetProject="biuxx-custom" />
+
+		<sqlMapGenerator 
+			targetPackage="mappers"
+			targetProject="biuxx-custom" />
+	
+		<javaClientGenerator 
+			targetPackage="com.biuxx.custom.dao.mapper"
+			type="XMLMAPPER" 
+			targetProject="biuxx-custom" />
+
+		<table 
+			schema="biuxx" 
+			tableName="CUSTOM_INFO"
+			enableCountByExample="false" 
+			enableUpdateByExample="false"
+			enableDeleteByExample="false" 
+			enableSelectByExample="false"
+			selectByExampleQueryId="false">
+		</table>
+		
+		<table 
+			schema="biuxx" 
+			tableName="CUSTOM_CORP_INFO"
+			enableCountByExample="false" 
+			enableUpdateByExample="false"
+			enableDeleteByExample="false" 
+			enableSelectByExample="false"
+			selectByExampleQueryId="false">
+		</table>
+		
+		<table 
+			schema="biuxx" 
+			tableName="CUSTOM_PSON_INFO"
+			enableCountByExample="false" 
+			enableUpdateByExample="false"
+			enableDeleteByExample="false" 
+			enableSelectByExample="false"
+			selectByExampleQueryId="false">
+		</table>
+	</context>
+</generatorConfiguration>
